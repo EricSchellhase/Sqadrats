@@ -14,18 +14,57 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: #1e1e1e;
         }
 
         header {
             background-color: #fff;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode header {
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             color: #228B22;
             font-size: 2.5em;
             font-weight: bold;
+            flex: 1;
+            text-align: center;
+        }
+
+        .theme-toggle {
+            background-color: #228B22;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: #1a6b1a;
+        }
+
+        body.dark-mode .theme-toggle {
+            background-color: #3aa33a;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background-color: #228B22;
         }
 
         main {
@@ -56,6 +95,7 @@
 <body>
     <header>
         <h1>Squadrats</h1>
+        <button class="theme-toggle" id="themeToggle">🌙 Dunkelmodus</button>
     </header>
 
     <main>
@@ -63,5 +103,29 @@
             <iframe src="Maps/Basemap.html" title="Karte"></iframe>
         </div>
     </main>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Theme aus localStorage laden (falls vorhanden)
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ Hellmodus';
+        }
+
+        // Theme-Schalter Listener
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️ Hellmodus';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙 Dunkelmodus';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>

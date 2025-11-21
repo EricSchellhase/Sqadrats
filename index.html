@@ -72,7 +72,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            min-height: calc(100vh - 120px);
+            min-height: calc(100vh - 180px);
         }
 
         .map-container {
@@ -95,7 +95,14 @@
             display: flex;
             gap: 0;
             border-bottom: 2px solid #228B22;
-            margin-bottom: 20px;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        body.dark-mode .tabs {
+            background-color: #2d2d2d;
         }
 
         .tab-button {
@@ -187,12 +194,13 @@
         <button class="theme-toggle" id="themeToggle">🌙 Dunkelmodus</button>
     </header>
 
+    <div class="tabs">
+        <button class="tab-button active" data-tab="startseite">Startseite</button>
+        <button class="tab-button" data-tab="links">Weitere Links</button>
+    </div>
+
     <main>
         <div style="width: 90%; max-width: 1200px;">
-            <div class="tabs">
-                <button class="tab-button active" data-tab="startseite">Startseite</button>
-                <button class="tab-button" data-tab="links">Weitere Links</button>
-            </div>
 
             <div id="startseite" class="tab-content active">
                 <div class="map-container">
@@ -207,7 +215,7 @@
                         <p>Erkunden Sie Wanderungen, Radtouren und andere Outdoor-Aktivitäten weltweit</p>
                     </a>
                     <a href="https://www.squadrats.com" target="_blank" class="link-card">
-                        <h3>Squadrats.com</h3>
+                        <h3>Squadrats</h3>
                         <p>Besuchen Sie die offizielle Squadrats-Webseite</p>
                     </a>
                     <a href="https://www.garmin.com" target="_blank" class="link-card">

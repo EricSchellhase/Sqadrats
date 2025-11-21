@@ -186,6 +186,48 @@
             font-size: 0.95em;
             opacity: 0.8;
         }
+        
+        /* Kachel-Grid für mehrere Karten */
+        .tiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding-top: 20px;
+        }
+
+        .tile-card {
+            display: block;
+            background-color: #fff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            padding: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tile-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+        }
+
+        .tile-frame {
+            height: 160px;
+            overflow: hidden;
+            border-radius: 6px;
+            background: #000;
+        }
+
+        .tile-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .tile-card h3 { color: #228B22; margin: 10px 0 6px; }
+        .tile-card p { margin: 0; opacity: 0.85; }
+
+        body.dark-mode .tile-card { background-color: #2d2d2d; color: #fff; }
     </style>
 </head>
 <body>
@@ -196,6 +238,7 @@
 
     <div class="tabs">
         <button class="tab-button active" data-tab="startseite">Startseite</button>
+        <button class="tab-button" data-tab="karten">Karten</button>
         <button class="tab-button" data-tab="links">Weitere Links</button>
     </div>
 
@@ -205,6 +248,26 @@
             <div id="startseite" class="tab-content active">
                 <div class="map-container">
                     <iframe src="Maps/Basemap.html" title="Karte"></iframe>
+                </div>
+            </div>
+
+            <div id="karten" class="tab-content">
+                <div class="tiles-grid">
+                    <a class="tile-card" href="Maps/Basemap.html" target="_blank">
+                        <div class="tile-frame"><iframe src="Maps/Basemap.html" title="Basemap"></iframe></div>
+                        <h3>Basemap</h3>
+                        <p>Grundkarte</p>
+                    </a>
+                    <a class="tile-card" href="Maps/Basemap.html" target="_blank">
+                        <div class="tile-frame"><iframe src="Maps/Basemap.html" title="Basemap 2"></iframe></div>
+                        <h3>Spezialkarte</h3>
+                        <p>Beispielansicht</p>
+                    </a>
+                    <a class="tile-card" href="Maps/Basemap.html" target="_blank">
+                        <div class="tile-frame"><iframe src="Maps/Basemap.html" title="Basemap 3"></iframe></div>
+                        <h3>Routenkarte</h3>
+                        <p>Routen & Wege</p>
+                    </a>
                 </div>
             </div>
 
